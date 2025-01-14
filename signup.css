@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0%;
+}  
+body{
+    background-image: url("signupbg.jpg"); 
+    background-size: 100% 740px;
+    margin: 0; 
+}
+.main{
+    height: 500px;
+    width: 400px;
+    text-align: center;
+    color: white; 
+    background-color: darkslategray;
+    margin-left: 40%;
+    margin-left: 6%;
+    text-align: center;
+    color: white;
+    position: absolute;
+    top:50%;
+    left:43%;
+    transform: translate(-50%,-50%);
+       
+}
+.main .text{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+} 
+
+.inp1{
+       border: none;
+       background-color: white;
+       border-bottom: 2px solid white;
+       width: 250px;
+       font-size: 20px;
+       margin-top: 40px;
+       outline: none;
+       color: black;
+
+}
+.inp2{
+    border: none;
+    background-color: white;
+    border-bottom: 2px solid white;
+    width: 250px;
+    font-size: 20px;
+    margin-top: 40px;
+    outline: none;
+    color: black;
+}  
+.inp3{
+    border: none;
+    background-color: white;
+    border-bottom: 2px solid white;
+    width: 250px;
+    font-size: 20px;
+    margin-top: 40px;
+    outline: none;
+    color: black;
+}  
+.inp4{
+    border: none;
+    background-color: white;
+    border-bottom: 2px solid white;
+    width: 250px;
+    font-size: 20px;
+    margin-top: 40px;
+    outline: none;
+    color: black;
+}  
+.inp5{
+    border: none;
+    background-color: white;
+    border-bottom: 2px solid white;
+    width: 250px;
+    font-size: 20px;
+    margin-top: 40px;
+    outline: none;
+    color: black;
+}  
+.text button{
+    width: 250px;
+    height: 44px;
+    background-color: plum;
+    color: black;
+    border: none;
+    font-size: 22px;
+    border-radius: 25px;
+    margin-top: 20px;
+} 
+button:hover{
+    border: 3px solid yellow;
+    color: white;
+    font-size: 20px;
+    background-color: black;
+}
+
+
+
+
