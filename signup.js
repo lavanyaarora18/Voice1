@@ -50,7 +50,7 @@ function validateForm() {
         return false;
     }
 
-    let passwordPattern = /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z!@#$%^&*(),.?":{}|<>]{8,}$/;
+    let passwordPattern = /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z0-9!@#$%^&*(),.?":{}|<>]{8,}$/;
     if (!password.match(passwordPattern)) {
         formError.innerHTML = "Password must be at least 8 characters long, and contain at least one uppercase letter and one special character.";
         return false;
