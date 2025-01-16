@@ -1,45 +1,60 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Sign Up</title>
-        <link rel="stylesheet" type="text/css" href="signup.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
 
+    <div class="container">
+        <h2>Signup Form</h2>
+        <form id="signupForm" onsubmit="return validateForm()" action="home.html">
+            
+            <label for="salutation">Salutation:</label>
+            <select id="salutation" name="salutation" required>
+                <option value="">Select...</option>
+                <option value="Mr">Mr.</option>
+                <option value="Ms">Ms.</option>
+                <option value="Mrs">Mrs.</option>
+            </select>
 
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
 
-    </head>
-    
-    <body>
-        
-        <div class = "main"><br>
-            <h2>Sign Up</h2>
-    <div class="text">
-                <form method="post" action="connection.php">
-                        <input class="inp1" type="text" placeholder="Name" name="uname" required>
-                        
-                        <input class="inp2" type="email" placeholder="Email" name="uemail" required>
-                        
-                        <input class="inp3" type="userid" placeholder="User Id" name="uid" required>
-                                               
-                        <input class="inp4" type="password" placeholder="Password" name="upass" required>
-                        
-                        <input class="inp5" type="password" placeholder="Confirm password" name="uconpass" required> 
-                    <br><br>
-                        <input type ="checkbox" id="cb" class="check-button"> 
-                        
-                        <label for="cb" class="check">I accept the terms and conditions</label>
-                <br><br>
-                <p id="error-message" class="error-message"></p>
-                
-                        <button type="submit" class="submit-btn">REGISTER</button>
-                    
-                </div>   
-                
-        </div>
+            <label for="middleName">Middle Name (Optional):</label>
+            <input type="text" id="middleName" name="middleName">
 
-    </form> 
-    
-    </body>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
 
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="userId">User ID:</label>
+            <input type="text" id="userId" name="userId" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+            <div class="captcha-container">
+                <label for="captcha">Captcha:</label>
+                <span id="captchaText">5F7D2</span>
+                <input type="text" id="captcha" name="captcha" required>
+            </div>
+
+            <p class="error" id="captchaError"></p>
+
+            <input type="submit" value="Sign Up">
+        </form>
+
+        <p class="error" id="formError"></p>
+    </div>
+
+    <script src="signup.js"></script>
+</body>
 </html>

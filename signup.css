@@ -1,103 +1,147 @@
-*{
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('signupbg.webp'); 
+    background-size: cover;  
+    background-position: center;  
+    background-repeat: no-repeat;  
     margin: 0;
-    padding: 0%;
-}  
-body{
-    background-image: url("signupbg.jpg"); 
-    background-size: 100% 740px;
-    margin: 0; 
-}
-.main{
-    height: 500px;
-    width: 400px;
-    text-align: center;
-    color: white; 
-    background-color: darkslategray;
-    margin-left: 40%;
-    margin-left: 6%;
-    text-align: center;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
     color: white;
-    position: absolute;
-    top:50%;
-    left:43%;
-    transform: translate(-50%,-50%);
-       
 }
-.main .text{
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-} 
 
-.inp1{
-       border: none;
-       background-color: white;
-       border-bottom: 2px solid white;
-       width: 250px;
-       font-size: 20px;
-       margin-top: 40px;
-       outline: none;
-       color: black;
-
+.container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    text-align: left;
+    box-sizing: border-box; 
+    margin: 10px; 
 }
-.inp2{
-    border: none;
-    background-color: white;
-    border-bottom: 2px solid white;
-    width: 250px;
-    font-size: 20px;
-    margin-top: 40px;
+
+h2 {
+    font-size: 28px;
+    color: #4f5b66;
+    margin-bottom: 25px;
+    font-weight: 600;
+    text-align: center;
+}
+
+input[type="text"], input[type="email"], input[type="password"], select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border-radius: 5px;
+    border: 1px solid #a5d6a7;
+    font-size: 16px;
+    color: #4f5b66;
+    box-sizing: border-box; 
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, select:focus {
+    border-color: #81c784;
     outline: none;
-    color: black;
-}  
-.inp3{
-    border: none;
-    background-color: white;
-    border-bottom: 2px solid white;
-    width: 250px;
+}
+
+.error {
+    color: #f44336;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.captcha-container {
+    margin-top: 10px;  
+    background-color: #f1f8e9;  
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+#captchaText {
     font-size: 20px;
-    margin-top: 40px;
-    outline: none;
-    color: black;
-}  
-.inp4{
-    border: none;
-    background-color: white;
-    border-bottom: 2px solid white;
-    width: 250px;
-    font-size: 20px;
-    margin-top: 40px;
-    outline: none;
-    color: black;
-}  
-.inp5{
-    border: none;
-    background-color: white;
-    border-bottom: 2px solid white;
-    width: 250px;
-    font-size: 20px;
-    margin-top: 40px;
-    outline: none;
-    color: black;
-}  
-.text button{
-    width: 250px;
-    height: 44px;
-    background-color: plum;
-    color: black;
-    border: none;
-    font-size: 22px;
-    border-radius: 25px;
-    margin-top: 20px;
-} 
-button:hover{
-    border: 3px solid yellow;
+    font-weight: bold;
+    color: #388e3c;
+}
+
+input[type="submit"] {
+    background-color: #a5d6a7;  
     color: white;
-    font-size: 20px;
-    background-color: black;
+    font-size: 18px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px; 
 }
 
+input[type="submit"]:hover {
+    background-color: #81c784;  
+}
 
+label {
+    font-size: 16px;
+    color: #4f5b66;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left;
+}
 
+#name-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; 
+}
 
+select {
+    font-size: 16px;
+    width: 32%;  
+}
+
+input[type="text"] {
+    width: 32%; 
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    input[type="submit"] {
+        font-size: 16px;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"], select {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    #name-section {
+        flex-direction: column;
+    }
+
+    #name-section input[type="text"] {
+        width: 100%;
+    }
+
+    #name-section select {
+        width: 100%;
+    }
+}
