@@ -10,15 +10,31 @@ function generateCaptcha() {
 
 window.onload = function () {
     generateCaptcha();
+    addRealTimeValidation();
 };
 
-function validateForm() {
-    let formError = document.getElementById("formError");
-    let captchaError = document.getElementById("captchaError");
-    let captcha = document.getElementById("captcha").value;
-    let captchaText = document.getElementById("captchaText").innerText;
+function addRealTimeValidation() {
+    const fields = ['firstName', 'lastName', 'email', 'userId', 'password', 'confirmPassword', 'captcha'];
+    fields.forEach(field => {
+        document.getElementById(field).addEventListener('input', validateField);
+    });
+}
 
-    formError.innerHTML = '';
+function validateField() {
+    let firstNameError = document.getElementById("firstNameError");
+    let lastNameError = document.getElementById("lastNameError");
+    let emailError = document.getElementById("emailError");
+    let userIdError = document.getElementById("userIdError");
+    let passwordError = document.getElementById("passwordError");
+    let confirmPasswordError = document.getElementById("confirmPasswordError");
+    let captchaError = document.getElementById("captchaError");
+
+    firstNameError.innerHTML = '';
+    lastNameError.innerHTML = '';
+    userIdError.innerHTML = '';
+    passwordError.innerHTML = '';
+    confirmPasswordError.innerHTML = '';
+    emailError.innerHTML = '';
     captchaError.innerHTML = '';
 
     let firstName = document.getElementById("firstName").value;
@@ -27,44 +43,58 @@ function validateForm() {
     let password = document.getElementById("password").value;
     let confirmPassword = document.getElementById("confirmPassword").value;
     let email = document.getElementById("email").value;
-    let salutation = document.getElementById("salutation").value;
+    let captcha = document.getElementById("captcha").value;
+    let captchaText = document.getElementById("captchaText").innerText;
 
-    if (!firstName || !lastName) {
-        formError.innerHTML = "First name and Last name are required.";
-        return false;
+    if (!firstName) {
+        firstNameError.innerHTML = "First name is required.";
+    }
+
+    if (!lastName) {
+        lastNameError.innerHTML = "Last name is required.";
     }
 
     let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    if (!email || !email.match(emailPattern)) {
-        formError.innerHTML = "Please enter a valid email address.";
-        return false;
+    if (email && !email.match(emailPattern)) {
+        emailError.innerHTML = "Please enter a valid email address.";
     }
 
     let userIdPattern = /^[a-zA-Z0-9]+$/;  
     if (userId.length < 5) {
-        formError.innerHTML = "User ID must be at least 5 characters.";
-        return false;
-    }
-    if (!userId.match(userIdPattern)) {
-        formError.innerHTML = "User ID can only contain alphabets and numbers.";
-        return false;
+        userIdError.innerHTML = "User  ID must be at least 5 characters.";
+    } else if (userId && !userId.match(userIdPattern)) {
+        userIdError.innerHTML = "User  ID can only contain alphabets and numbers.";
     }
 
     let passwordPattern = /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z0-9!@#$%^&*(),.?":{}|<>]{8,}$/;
-    if (!password.match(passwordPattern)) {
-        formError.innerHTML = "Password must be at least 8 characters long, and contain at least one uppercase letter and one special character.";
-        return false;
+    if (password && !password.match(passwordPattern)) {
+        passwordError.innerHTML = "Password must be at least 8 characters long, and contain at least one uppercase letter and one special character.";
     }
 
     if (password !== confirmPassword) {
-        formError.innerHTML = "Passwords do not match.";
-        return false;
+        confirmPasswordError.innerHTML = "Passwords do not match.";
     }
 
-    if (captcha !== captchaText) {
+    if (captcha && captcha !== captchaText) {
         captchaError.innerHTML = "Captcha does not match.";
+    }
+}
+
+function validateForm() {
+       
+    let firstNameError = document.getElementById("firstNameError").innerHTML;
+    let lastNameError = document.getElementById("lastNameError").innerHTML;
+    let userIdError = document.getElementById("userIdError").innerHTML;
+    let passwordError = document.getElementById("passwordError").innerHTML;
+    let confirmPasswordError = document.getElementById("confirmPasswordError").innerHTML;
+    let emailError = document.getElementById("emailError").innerHTML;
+    let captchaError = document.getElementById("captchaError").innerHTML;
+
+    if(firstNameError || lastNameError || userIdError || passwordError || confirmPasswordError || emailError || captchaError)
+    {
         return false;
     }
+        return true;
+ 
 
-    return true;
 }

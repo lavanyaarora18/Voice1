@@ -31,6 +31,7 @@ h1{
 }
 #voice{
     width: 150px;
+    display: none;
     
 }
 #btn{
@@ -48,7 +49,6 @@ h1{
     border: none;
     transition: all 0.5s;
     cursor: pointer;
-
 }
 #btn:hover{
     box-shadow: 2px 2px 20px rgb(21, 145, 207), 2px 2px 20px rgb(213, 55, 55);
