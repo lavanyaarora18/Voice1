@@ -98,3 +98,15 @@ function validateForm() {
  
 
 }
+
+document.querySelectorAll('.toggle-password').forEach(toggle => {
+    toggle.addEventListener('click', function () {
+        const targetInput = document.querySelector(this.getAttribute('data-toggle'));
+        const isPassword = targetInput.getAttribute('type') === 'password';
+        
+        targetInput.setAttribute('type', isPassword ? 'text' : 'password');
+        
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+    });
+});

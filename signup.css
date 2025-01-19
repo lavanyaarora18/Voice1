@@ -148,3 +148,29 @@ input[type="text"] {
         width: 100%;
     }
 }
+.password-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 40px; 
+    box-sizing: border-box;
+}
+
+.password-wrapper i {
+    position: absolute;
+    top: 40%; 
+    right: 10px; 
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    color: #888;
+}
+
+.password-wrapper i:hover {
+    color: #333;
+}
+

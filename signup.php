@@ -22,7 +22,7 @@
          {
             echo "<script>
             alert('Registration successful');
-            window.location.href = 'signup.html';
+            window.location.href = 'home.html';
             </script>";
          } 
          else{
