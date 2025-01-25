@@ -11,17 +11,24 @@
 <body>
   <div class="main">
     <div class="text">
-      <form method="post" action="home.php">
-        <input class="inp1" type="text" placeholder="Enter user id" name="UID" required>
+      <form method="post" action="home.php" onsubmit="return validateForm()">
+        <input class="inp1" type="text" placeholder="Enter User ID" name="UID" required>
         <div class="password-wrapper">
-          <input class="inp2" type="password" placeholder="Enter password" name="Pass" id="password" required>
+          <input class="inp2" type="password" placeholder="Enter Password" name="Pass" id="password" required>
           <i id="togglePassword" class="fas fa-eye"></i>
         </div>
+        <div id="captchaContainer">
+          <span id="captchaText"></span>
+          <input type="text" id="captcha" placeholder="Enter Captcha" required/>
+          <div id="captchaError" class="error"></div>
+      </div>
         <button type="submit" class="submit-btn">Login</button>
       </form>
       <form method="post" action="signup.html">
         <button type="submit" class="submit-btn">Sign up</button>
       </form>
+      <a href="forgot.html" >
+        <p>Forgot password</p> </a>
     </div>
   </div>
   <script src="home.js"></script>

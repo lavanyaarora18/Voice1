@@ -23,7 +23,7 @@
 
      if ($stmt->fetch()) {
          if ($storedPass === $encpass) {
-             header("Location: speak.html");  
+             header("Location: dashboard.html");  
          } else {
             echo
             "<script>

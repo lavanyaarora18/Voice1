@@ -27,7 +27,7 @@
          } 
          else{
             echo "<script>
-            alert('Registration failed: " . $stmt->error . "');
+            alert('Registration failed: User already exists');
             window.history.back();
             </script>";
          } 
