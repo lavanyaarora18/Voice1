@@ -5,16 +5,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-   
     <link href="dashboard.css" rel="stylesheet" />
 </head>
-<body >
-    <div class="navbar">
-        <a href="contactus.html">Contact Us</a>
-        <a href="aboutus.html">About Us</a>
-        <a href="speak.html">Talk to Siphra</a>
-        <a href="dashboard.html">Dashboard</a>
+<body>
 
-    </div>   
+    <div class="navbar">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="speak.html">Talk to Siphra</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="contactus.html">Contact Us</a>
+    </div>
+
+    <div class="dashboard-container">
+        <h1>Siphra at Your Service</h1>
+        <hr style="border: 2px solid #8B4513; width: 80%; margin: 20px auto;">
+        <div class="rolling-menu-container">
+            <button class="nav-btn prev" onclick="scrollLeft()">&#10094;</button>
+            <div class="rolling-menu" id="menu">
+                <div class="function-card">
+                    <span class="icon">📰</span>
+                    <h3>News</h3>
+                    <p>Stay informed, Stay ahead</p>
+                </div>
+                <div class="function-card">
+                    <span class="icon">😂</span>
+                    <h3>Jokes</h3>
+                    <p>Laugh more, Stress less</p>
+                </div>
+                <div class="function-card">
+                    <span class="icon">🤯</span>
+                    <h3>Random Facts</h3>
+                    <p>Surprise your mind</p>
+                </div>
+                <div class="function-card">
+                    <span class="icon">📱</span>
+                    <h3>Open Apps</h3>
+                    <p>Open your app instantly</p>
+                </div>
+                <div class="function-card">
+                    <span class="icon">🔎</span>
+                    <h3>Search</h3>
+                    <p>Find anything in seconds</p>
+                </div>
+                <div class="function-card">
+                    <span class="icon">🎵🎬</span>
+                    <h3>Songs and Videos</h3>
+                    <p>Say it, Play it</p>
+                </div>
+                <div class="function-card">
+                    <span class="icon">☀️🌧️</span>
+                    <h3>Weather</h3>
+                    <p>Rain or Shine</p>
+                </div>
+            </div>
+            <button class="nav-btn next" onclick="scrollRight()">&#10095;</button>
+        </div>
+    </div>
+
+    <button id="chatbot-button">
+        🗨️ Chat
+    </button>    
+    
+    <script src="dashboard.js"></script>  
 </body>
 </html>

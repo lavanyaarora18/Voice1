@@ -3,14 +3,30 @@
     padding: 0;
 }  
 body {
-    background-image: url("homebg.jpg"); 
-    background-size: cover;
     margin: 0;
     font-family: Arial, sans-serif;
+    overflow: hidden; 
 }
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("homebg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transform: scaleX(1.25); 
+    z-index: -1;
+}
+
+
 .main {
     height: 500px;
-    width: 400px;
+    width: 350px;
     text-align: center;
     color: white; 
     background-color: rgb(77, 166, 166);
