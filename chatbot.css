@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body{
+    width: 100%;
+    height: 100vh;
+}
+.chat-container{
+    width: 100%;
+    height: 80%;
+    background-color: rgb(58, 60, 60);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 20px;
+    overflow: auto;
+}
+.user-chat-box{
+    width: 60%;
+    position: relative;
+    left: 40%;
+}
+.ai-chat-box{
+    width: 60%;
+    position: relative;
+}
+.user-chat-area{
+    width: 90%;
+    padding: 20px;
+    background-color: rgb(40, 39, 39);
+    color: beige;
+    border-radius: 40px 0px 40px 40px;
+    box-shadow: 2px 2px 10px rgb(168, 198, 211);
+}
+.ai-chat-area{
+    width: 90%;
+    padding: 20px;
+    background-color: rgb(26, 25, 25);
+    position: relative;
+    left: 10%;
+    color: beige;
+    border-radius: 0px 40px 40px 40px;
+    box-shadow: 2px 2px 10px rgb(168, 198, 211);
+}
+#userImage{
+    position: absolute;
+    right: 0;
+    filter: drop-shadow(2px 2px 10px black);
+}
+#aiImage{
+    position: absolute;
+    left: 0;
+    filter: drop-shadow(2px 2px 10px black);
+}
+.prompt-area{
+    width: 100%;
+    height: 20%;
+    background-color: rgb(58, 60, 60);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.prompt-area input{
+    width: 50%;
+    height: 80px;
+    background-color: black;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+    padding: 20px;
+    columns: white;
+    font-size: 20px;
+     color:white;
+}
+.prompt-area button{
+    width: 70px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: black;
+    border: none;
+    box-shadow: 2px 2px 10px rgb(168, 198, 211);
+    cursor: pointer;
+    transition : all 0.5 sec;
+}
+.prompt-area button:hover{
+    background-color: rgb(52, 51, 51);
+}
+.load{
+    filter: drop-shadow(2px 2px 10px black);
+}

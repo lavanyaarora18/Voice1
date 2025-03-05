@@ -175,3 +175,21 @@ input[type="text"] {
     color: #333;
 }
 
+#refreshCaptcha {
+    width: auto; 
+    height: auto; 
+    background-color: transparent; 
+    color: black; 
+    border: none; 
+    font-size: 18px; 
+    cursor: pointer;
+    transition: none;
+    margin-top: 5px;
+}
+
+#refreshCaptcha:hover {
+    border: none;  
+    background-color: transparent;  
+    color: black;  
+    font-size: 18px;  
+}

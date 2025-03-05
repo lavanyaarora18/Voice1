@@ -11,6 +11,12 @@ function generateCaptcha() {
 window.onload = function () {
     generateCaptcha();
     addRealTimeValidation();
+
+    document.getElementById("refreshCaptcha").addEventListener("click", function () {
+        generateCaptcha();
+        document.getElementById("captcha").value = ''; // Clear user input
+        document.getElementById("captchaError").innerHTML = ''; // Clear error message
+      });
 };
 
 function addRealTimeValidation() {

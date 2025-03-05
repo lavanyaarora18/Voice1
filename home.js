@@ -1,3 +1,14 @@
+window.onload = function () {
+  generateCaptcha();
+  addRealTimeValidation();
+
+
+document.getElementById("refreshCaptcha").addEventListener("click", function () {
+  generateCaptcha();
+  document.getElementById("captcha").value = ''; // Clear user input
+  document.getElementById("captchaError").innerHTML = ''; // Clear error message
+});
+
 document.getElementById("togglePassword").addEventListener("click", function () {
     const passwordField = document.getElementById("password");
     const isPasswordHidden = passwordField.type === "password";
@@ -7,6 +18,8 @@ document.getElementById("togglePassword").addEventListener("click", function () 
     this.classList.toggle("fa-eye");
     this.classList.toggle("fa-eye-slash");
   });
+};
+
   function generateCaptcha() {
     let captchaText = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -16,11 +29,6 @@ document.getElementById("togglePassword").addEventListener("click", function () 
     }
     document.getElementById('captchaText').innerText = captchaText;  
 }
-
-window.onload = function () {
-    generateCaptcha();
-    addRealTimeValidation();
-};
   
 function addRealTimeValidation() {
   const fields = ['captcha'];
