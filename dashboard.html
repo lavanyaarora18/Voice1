@@ -1,73 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link href="dashboard.css" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VISTA - Voice, Image, Search, Translation Assistant</title>
+  <link rel="stylesheet" href="dashboard.css" />
 </head>
 <body>
 
+  <!-- Header / Navbar -->
+  <header>
     <div class="navbar">
+      <div class="nav-logo">VISTA</div>
+      <div class="nav-links">
         <a href="dashboard.html">Dashboard</a>
         <a href="speak.html">Talk to Siphra</a>
         <a href="imgsearch.html">Find the Perfect Image</a>
         <a href="aboutus.html">About Us</a>
         <a href="contactus.html">Contact Us</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Page Content -->
+  <main>
+    <!-- Hero Section -->
+    <div class="hero">
+      <h1>VISTA</h1>
+      <p class="tagline">
+        Your all-in-one AI assistant for <span class="highlight">voice</span>, <span class="highlight">image</span>, <span class="highlight">search</span>, and <span class="highlight">translation</span>.
+      </p>
     </div>
 
-    <div class="dashboard-container">
-        <h1><span id="name">VISTA at Your Service</span><br>
-            <span id="name1">Voice, Image, Search & Translation Assistant</span></h1>
-        <hr style="border: 2px solid lightsteelblue; width: 80%; margin: 20px auto;">
-        <div class="rolling-menu-container">
-            <button class="nav-btn prev" onclick="scrollLeft()">&#10094;</button>
-            <div class="rolling-menu" id="menu">
-                <div class="function-card">
-                    <span class="icon">📰</span>
-                    <h3>News</h3>
-                    <p>Stay informed, Stay ahead</p>
-                </div>
-                <div class="function-card">
-                    <span class="icon">😂</span>
-                    <h3>Jokes</h3>
-                    <p>Laugh more, Stress less</p>
-                </div>
-                <div class="function-card">
-                    <span class="icon">🤯</span>
-                    <h3>Random Facts</h3>
-                    <p>Surprise your mind</p>
-                </div>
-                <div class="function-card">
-                    <span class="icon">📱</span>
-                    <h3>Open Apps</h3>
-                    <p>Open your app instantly</p>
-                </div>
-                <div class="function-card">
-                    <span class="icon">🔎</span>
-                    <h3>Search</h3>
-                    <p>Find anything in seconds</p>
-                </div>
-                <div class="function-card">
-                    <span class="icon">🎵🎬</span>
-                    <h3>Songs and Videos</h3>
-                    <p>Say it, Play it</p>
-                </div>
-                <div class="function-card">
-                    <span class="icon">☀️🌧️</span>
-                    <h3>Weather</h3>
-                    <p>Rain or Shine</p>
-                </div>
-            </div>
-            <button class="nav-btn next" onclick="scrollRight()">&#10095;</button>
+    <!-- Intro Section -->
+    <section class="intro">
+        <h2>Meet Siphra</h2>
+        <p>
+          Siphra is your intelligent assistant built right into VISTA. Whether you're searching on Google, playing Youtube videos, or asking for the weather forecast — it all works seamlessly.
+        </p>
+        <br><br>
+        <a href="#features" class="cta">Explore Features</a>
+      </section>
+      
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+      <h2>Key Features</h2>
+
+      <div class="scroll-controls">
+        <button class="scroll-btn left" onclick="scrollFeatures(-1)">←</button>
+        <button class="scroll-btn right" onclick="scrollFeatures(1)">→</button>
+      </div>
+
+      <div class="feature-grid" id="featureScroll">
+        <div class="card reveal">
+          <h3>Voice Assistant</h3>
+          <p>Control your browser and perform tasks using simple voice commands.</p>
         </div>
-    </div>
+        <div class="card reveal">
+          <h3>Image Intelligence</h3>
+          <p>Search and analyze images with smart recognition and filters.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Search Engine</h3>
+          <p>Fast, accurate local and online search results tailored to your needs.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Translation Tool</h3>
+          <p>Translate text across multiple languages in real-time with ease.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Smart Chatbot</h3>
+          <p>Interact with an AI chatbot for tasks, answers, or just a friendly chat.</p>
+        </div>
+      </div>
+    </section>
 
-    <button id="chatbot-button" onclick="window.location.href='chatbot.html'">
+    <!-- Testimonial Section -->
+    <section class="quote">
+      <blockquote>"VISTA is like magic — it understands me, helps me, and does it beautifully."</blockquote>
+      <cite>– A Happy User</cite>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h3>Ready to experience the power of VISTA?</h3>
+      </section>
+
+      <button id="chatbot-button" onclick="window.location.href='chatbot.html'">
         🗨️ Chat
-    </button>    
-    
-    <script src="dashboard.js"></script>  
+    </button> 
+      
+  </main>
+
+  <footer id="contact"></footer>
+
+  <!-- Scripts -->
+  <script>
+    // Reveal animation
+    const reveals = document.querySelectorAll(".reveal");
+    window.addEventListener("scroll", () => {
+      reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const revealTop = el.getBoundingClientRect().top;
+        if (revealTop < windowHeight - 100) {
+          el.classList.add("active");
+        }
+      });
+    });
+
+    // Horizontal scroll with arrows
+    function scrollFeatures(direction) {
+      const container = document.getElementById('featureScroll');
+      const scrollAmount = 320;
+      container.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  </script>
 </body>
 </html>
