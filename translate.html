@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>VISTA - Translation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .translator {
+      background: #fff;
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .top-section {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      width: 80%;
+      height: 140px;
+      padding: 15px;
+      font-size: 1rem;
+      border-radius: 12px;
+      border: 2px solid #ccc;
+      resize: none;
+      transition: 0.3s;
+    }
+
+    textarea:focus {
+      border-color: #28a745;
+      outline: none;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 2px solid #ccc;
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #218838;
+    }
+
+    .swap {
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.3s, color 0.3s;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin: center;
+  user-select: none;
+}
+
+
+    .swap:hover {
+      transform: rotate(180deg);
+      color: #28a745;
+    }
+
+    .label {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="translator">
+    <div class="top-section">
+      <div style="flex: 1">
+        <div class="label">From</div>
+        <select id="fromLang">
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+          <option value="fr">French</option>
+          <option value="es">Spanish</option>
+          <option value="de">German</option>
+        </select>
+        <textarea id="fromText" placeholder="Type something here..."></textarea>
+      </div>
+
+      <div class="swap" title="Swap Languages" onclick="swapLanguages()">⇆</div>
+
+      <div style="flex: 1">
+        <div class="label">To</div>
+        <select id="toLang">
+          <option value="hi">Hindi</option>
+          <option value="en">English</option>
+          <option value="fr">French</option>
+          <option value="es">Spanish</option>
+          <option value="de">German</option>
+        </select>
+        <textarea id="toText" placeholder="Translation appears here..." readonly></textarea>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn" onclick="translateText()">Translate</button>
+      <button class="btn" onclick="speakText()">🔊 Speak</button>
+      <button class="btn" onclick="copyText()">📋 Copy</button>
+    </div>
+  </div>
+
+  <script>
+    const fromText = document.getElementById("fromText");
+    const toText = document.getElementById("toText");
+    const fromLang = document.getElementById("fromLang");
+    const toLang = document.getElementById("toLang");
+
+    const dictionary = {
+      en: {
+        hi: {
+          "hello": "नमस्ते",
+          "good morning": "सुप्रभात",
+          "how are you": "आप कैसे हैं",
+          "thank you": "धन्यवाद",
+          "good night": "शुभ रात्रि",
+          "please": "कृपया",
+          "yes": "हाँ",
+          "no": "नहीं",
+          "sorry": "माफ़ कीजिए",
+          "what is your name": "आपका नाम क्या है",
+          "i am fine": "मैं ठीक हूँ",
+          "i love you": "मैं तुमसे प्यार करता हूँ",
+          "welcome": "स्वागत है",
+          "excuse me": "माफ़ कीजिए",
+          "goodbye": "अलविदा"
+        },
+        fr: {
+          "hello": "bonjour",
+          "good morning": "bonjour",
+          "how are you": "comment ça va",
+          "thank you": "merci",
+          "good night": "bonne nuit",
+          "please": "s'il vous plaît",
+          "yes": "oui",
+          "no": "non",
+          "sorry": "désolé",
+          "what is your name": "comment tu t'appelles",
+          "i am fine": "je vais bien",
+          "i love you": "je t'aime",
+          "welcome": "bienvenue",
+          "excuse me": "excusez-moi",
+          "goodbye": "au revoir"
+        },
+        es: {
+          "hello": "hola",
+          "good morning": "buenos días",
+          "how are you": "¿cómo estás?",
+          "thank you": "gracias",
+          "good night": "buenas noches",
+          "please": "por favor",
+          "yes": "sí",
+          "no": "no",
+          "sorry": "lo siento",
+          "what is your name": "¿cómo te llamas?",
+          "i am fine": "estoy bien",
+          "i love you": "te quiero",
+          "welcome": "bienvenido",
+          "excuse me": "perdón",
+          "goodbye": "adiós"
+        },
+        de: {
+          "hello": "hallo",
+          "good morning": "guten Morgen",
+          "how are you": "wie geht es dir",
+          "thank you": "danke",
+          "good night": "gute Nacht",
+          "please": "bitte",
+          "yes": "ja",
+          "no": "nein",
+          "sorry": "entschuldigung",
+          "what is your name": "wie heißt du",
+          "i am fine": "mir geht's gut",
+          "i love you": "ich liebe dich",
+          "welcome": "willkommen",
+          "excuse me": "entschuldigen Sie",
+          "goodbye": "auf Wiedersehen"
+        }
+      },
+      hi: {
+        en: {
+          "नमस्ते": "hello",
+          "सुप्रभात": "good morning",
+          "आप कैसे हैं": "how are you",
+          "धन्यवाद": "thank you",
+          "शुभ रात्रि": "good night",
+          "कृपया": "please",
+          "हाँ": "yes",
+          "नहीं": "no",
+          "माफ़ कीजिए": "sorry",
+          "आपका नाम क्या है": "what is your name",
+          "मैं ठीक हूँ": "i am fine",
+          "मैं तुमसे प्यार करता हूँ": "i love you",
+          "स्वागत है": "welcome",
+          "अलविदा": "goodbye"
+        }
+      },
+      fr: {
+        en: {
+          "bonjour": "hello",
+          "bonne nuit": "good night",
+          "comment ça va": "how are you",
+          "merci": "thank you",
+          "s'il vous plaît": "please",
+          "oui": "yes",
+          "non": "no",
+          "désolé": "sorry",
+          "comment tu t'appelles": "what is your name",
+          "je vais bien": "i am fine",
+          "je t'aime": "i love you",
+          "bienvenue": "welcome",
+          "excusez-moi": "excuse me",
+          "au revoir": "goodbye"
+        }
+      },
+      es: {
+        en: {
+          "hola": "hello",
+          "buenos días": "good morning",
+          "¿cómo estás?": "how are you",
+          "gracias": "thank you",
+          "buenas noches": "good night",
+          "por favor": "please",
+          "sí": "yes",
+          "no": "no",
+          "lo siento": "sorry",
+          "¿cómo te llamas?": "what is your name",
+          "estoy bien": "i am fine",
+          "te quiero": "i love you",
+          "bienvenido": "welcome",
+          "perdón": "excuse me",
+          "adiós": "goodbye"
+        }
+      },
+      de: {
+        en: {
+          "hallo": "hello",
+          "guten Morgen": "good morning",
+          "wie geht es dir": "how are you",
+          "danke": "thank you",
+          "gute Nacht": "good night",
+          "bitte": "please",
+          "ja": "yes",
+          "nein": "no",
+          "entschuldigung": "sorry",
+          "wie heißt du": "what is your name",
+          "mir geht's gut": "i am fine",
+          "ich liebe dich": "i love you",
+          "willkommen": "welcome",
+          "entschuldigen Sie": "excuse me",
+          "auf Wiedersehen": "goodbye"
+        }
+      }
+    };
+
+    function translateText() {
+      const from = fromLang.value;
+      const to = toLang.value;
+      const input = fromText.value.trim().toLowerCase();
+
+      const translated = dictionary[from]?.[to]?.[input];
+      toText.value = translated || "❌ Translation not available offline.";
+    }
+
+    function swapLanguages() {
+      [fromLang.value, toLang.value] = [toLang.value, fromLang.value];
+      [fromText.value, toText.value] = [toText.value, fromText.value];
+    }
+
+    function speakText() {
+      const text = toText.value;
+      if (!text) return;
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = toLang.value === "hi" ? "hi-IN" :
+                       toLang.value === "fr" ? "fr-FR" :
+                       toLang.value === "es" ? "es-ES" :
+                       toLang.value === "de" ? "de-DE" :
+                       "en-US";
+      speechSynthesis.speak(utterance);
+    }
+
+    function copyText() {
+      if (!toText.value) return;
+      navigator.clipboard.writeText(toText.value);
+      alert("✅ Translation copied!");
+    }
+  </script>
+</body>
+</html>
