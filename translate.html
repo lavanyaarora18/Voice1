@@ -84,18 +84,17 @@
     }
 
     .swap {
-  font-size: 24px;
-  cursor: pointer;
-  transition: transform 0.3s, color 0.3s;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform-origin: center;
-  user-select: none;
-}
-
+      font-size: 24px;
+      cursor: pointer;
+      transition: transform 0.3s, color 0.3s;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform-origin: center;
+      user-select: none;
+    }
 
     .swap:hover {
       transform: rotate(180deg);
@@ -298,6 +297,18 @@
       }
     };
 
+    let voices = [];
+
+    function loadVoices() {
+      voices = speechSynthesis.getVoices();
+      if (voices.length === 0) {
+        setTimeout(loadVoices, 100);
+      }
+    }
+
+    loadVoices();
+    speechSynthesis.onvoiceschanged = loadVoices;
+
     function translateText() {
       const from = fromLang.value;
       const to = toLang.value;
@@ -315,12 +326,23 @@
     function speakText() {
       const text = toText.value;
       if (!text) return;
+
+      speechSynthesis.cancel();
+
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = toLang.value === "hi" ? "hi-IN" :
+      const langCode = toLang.value === "hi" ? "hi-IN" :
                        toLang.value === "fr" ? "fr-FR" :
                        toLang.value === "es" ? "es-ES" :
                        toLang.value === "de" ? "de-DE" :
                        "en-US";
+
+      utterance.lang = langCode;
+
+      const matchedVoice = voices.find(v => v.lang === langCode);
+      if (matchedVoice) {
+        utterance.voice = matchedVoice;
+      }
+
       speechSynthesis.speak(utterance);
     }
 
